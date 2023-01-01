@@ -72,3 +72,7 @@ li {
 #description {
     text-transform: capitalize;
 }
+
+.attribution {
+    text-align: center;
+}
