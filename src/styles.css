@@ -29,10 +29,14 @@ li {
     list-style: none;
 }
 
+.weather-app-wrapper {
+    max-width: 650px;
+    margin: 30px auto;
+}
 .weather-app {
     border: 1px solid #60bbcd;
     padding: 20px;
-    margin: 20px auto;
+    margin: 30px auto;
     border-radius: 15px;
     max-width: 650px;
 }
