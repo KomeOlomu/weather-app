@@ -1,5 +1,5 @@
 //Elements definition
-let apiKey = "bb0df6985c2eab6a171d64a6bacbb4e1";
+let apiKey = "0d1add16b3t7670282dd93a5aob40cbf";
 let temperatureElement = document.querySelector("#temperature");
 let cityElement = document.querySelector("#city");
 let cityInput = document.querySelector("#city-input");
@@ -47,7 +47,8 @@ function dateFormat(date) {
 function search(event) {
   event.preventDefault();
   let city = cityInput.value;
-  let apiUrl = `https://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=1&appid=${apiKey}`;
+  // let apiUrl = `https://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=1&appid=${apiKey}`;
+  let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}`;
   axios.get(apiUrl).then(function (response) {
     let lat = response.data[0].lat;
     let lon = response.data[0].lon;
@@ -89,7 +90,8 @@ function showTemperature(response) {
 
 function fetchWeatherData(lat, lon) {
   let units = "metric";
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&lang={lang}&units=${units}`;
+  // let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&lang={lang}&units=${units}`;
+  let apiUrl = `https://api.shecodes.io/weather/v1/current?lat=${lat}&lon=${lon}&key=${apiKey}&units=${units}`;
   axios.get(apiUrl).then(showTemperature);
 }
 
