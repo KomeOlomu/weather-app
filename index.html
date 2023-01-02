@@ -23,73 +23,73 @@
     <main>
       <div class="container">
         <div class="weather-app-wrapper">
-        <div class="weather-app">
-          <form class="search-form" id="search-form">
+          <div class="weather-app">
+            <form class="search-form" id="search-form">
+              <div class="row">
+                <div class="col-6">
+                  <input
+                    type="search"
+                    placeholder="Type City"
+                    id="city-input"
+                    class="form-control"
+                  />
+                </div>
+                <div class="col-2">
+                  <input
+                    type="submit"
+                    value="Search"
+                    class="form-control btn btn-primary"
+                  />
+                </div>
+                <div class="col-4">
+                  <input
+                    type="submit"
+                    value=" Current location📍"
+                    class="form-control btn btn-outline-primary"
+                    id="current-location"
+                  />
+                </div>
+              </div>
+            </form>
+            <h1 id="city"></h1>
+            <ul>
+              <li id="date"></li>
+              <li id="description"></li>
+            </ul>
             <div class="row">
               <div class="col-6">
-                <input
-                  type="search"
-                  placeholder="Type City"
-                  id="city-input"
-                  class="form-control"
-                />
-              </div>
-              <div class="col-2">
-                <input
-                  type="submit"
-                  value="Search"
-                  class="form-control btn btn-primary"
-                />
-              </div>
-              <div class="col-4">
-                <input
-                  type="submit"
-                  value=" Current location📍"
-                  class="form-control btn btn-outline-primary"
-                  id="current-location"
-                />
-              </div>
-            </div>
-          </form>
-          <h1 id="city"></h1>
-          <ul>
-            <li id="date"></li>
-            <li id="description"></li>
-          </ul>
-          <div class="row">
-            <div class="col-6">
-              <div class="clearfix">
-                <img
-                  src="images/rainy-weather.png"
-                  alt="rainy-weather"
-                  class="weather-icon"
-                  width="65px"
-                />
-                <div class="float-left">
-                  <span id="temperature" class="temperature"></span>
-
-                  <span class="units">
-                    <a href="#" id="celcius">&#176;C </a> |<a
-                      href="#"
-                      id="fahrenheit"
-                      >&#176;F</a
-                    ></span
-                  >
+                <div class="d-flex temperature">
+                  <img
+                    src="images/rainy-weather.png"
+                    alt="rainy-weather"
+                    class="weather-icon"
+                    width="65px"
+                  />
+                  <div>
+                    <strong id="temperature"></strong
+                    ><span class="units">
+                      <a href="#" id="celcius">&#176;C </a> |<a
+                        href="#"
+                        id="fahrenheit"
+                        >&#176;F</a
+                      ></span
+                    >
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-          <ul>
-            <li id="humidity">Humidity: 79</li>
-            <li id="wind">Wind: 21</li>
-            <li>
-              <span id="high-temp">H: 28</span>&#176;
-              <span id="low-temp">L: 24</span>&#176;
-            </li>
-          </ul>
-          <div class="row week-forecast" id="forecast">
-            <div class="col2">
-              <div style="text-align: center" class="row"></div>
+            <ul>
+              <li id="humidity">Humidity: 79</li>
+              <li id="wind">Wind: 21</li>
+              <li>
+                <span id="high-temp">H: 28</span>&#176;
+                <span id="low-temp">L: 24</span>&#176;
+              </li>
+            </ul>
+            <div class="row week-forecast" id="forecast">
+              <div class="col2">
+                <div style="text-align: center" class="row"></div>
+              </div>
             </div>
           </div>
         </div>
@@ -102,7 +102,6 @@
           Open-source code
         </a>
         by Kome Olomu
-        </div>
       </div>
     </footer>
   </body>
