@@ -2,6 +2,12 @@ body {
     font-family: Arial, Helvetica, sans-serif;
 }
 
+.container {
+    height: 550px;
+        padding-left: 20px;
+        width: 620px;
+        border-radius: 30px;
+}
 h1 {
     color: black;
     font-size: 24px;
@@ -30,7 +36,7 @@ li {
 }
 
 .weather-app-wrapper {
-    max-width: 650px;
+    max-width: 590px;
     margin: 30px auto;
     padding-top: 35px;
 }
