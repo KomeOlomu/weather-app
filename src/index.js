@@ -13,6 +13,7 @@ let highTempElement = document.querySelector("#high-temp");
 let lowTempElement = document.querySelector("#low-temp");
 let descriptionElement = document.querySelector("#description");
 let currentLocation = document.querySelector("#current-location");
+let iconElement = document.querySelector(".weather-icon");
 
 //other constants definitions
 let tempInCelcius = 27;
@@ -50,8 +51,10 @@ function search(event) {
   // let apiUrl = `https://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=1&appid=${apiKey}`;
   let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}`;
   axios.get(apiUrl).then(function (response) {
-    let lat = response.data[0].lat;
-    let lon = response.data[0].lon;
+    // let lat = response.data[0].lat;
+    let lat = response.data.coordinates.latitude;
+    // let lon = response.data[0].lon;
+    let lon = response.data.coordinates.longitude;
     fetchWeatherData(lat, lon);
   });
 }
@@ -72,20 +75,23 @@ function convertCelcius(event) {
 }
 
 function showTemperature(response) {
-  let city = response.data.name;
+  let city = response.data.city;
   cityElement.innerHTML = city;
-  let temperature = Math.round(response.data.main.temp);
+  let temperature = Math.round(response.data.temperature.current);
   temperatureElement.innerHTML = temperature;
-  let humidity = response.data.main.humidity;
+  let humidity = response.data.temperature.humidity;
   humidityElement.innerHTML = `Humidity: ${humidity} %`;
-  let wind = response.data.wind.speed;
+  let wind = Math.round(response.data.wind.speed);
   windElement.innerHTML = `Wind: ${wind} km/h`;
-  let highTemp = Math.round(response.data.main.temp_max);
-  highTempElement.innerHTML = `H: ${highTemp}`;
-  let lowTemp = Math.round(response.data.main.temp_min);
-  lowTempElement.innerHTML = `L: ${lowTemp}`;
-  let description = response.data.weather[0].description;
+  // let highTemp = Math.round(response.data.main.temp_max);
+  // highTempElement.innerHTML = `H: ${highTemp}`;
+  // let lowTemp = Math.round(response.data.main.temp_min);
+  // lowTempElement.innerHTML = `L: ${lowTemp}`;
+  let description = response.data.condition.description;
   descriptionElement.innerHTML = description;
+
+  iconElement.src = response.data.condition.icon_url;
+  iconElement.alt = response.data.condition.icon;
 }
 
 function fetchWeatherData(lat, lon) {
