@@ -17,7 +17,7 @@ let iconElement = document.querySelector(".weather-icon");
 
 //other constants definitions
 let tempInCelcius = 27;
-let tempInFar = (tempInCelcius * 9) / 5 + 32;
+let tempInFar = Math.round(tempInCelcius * 9) / 5 + 32;
 let currentTime = new Date();
 
 //functions
