@@ -45,6 +45,32 @@ function dateFormat(date) {
   return `${day} ${hours}:${minutes}`;
 }
 
+function displayForecast() {
+  let forecastElement = document.querySelector("#forecast");
+  let forecastHTML = `<div class="row">`;
+  let days = ["Mon", "Tue", "Wed", "Thur", "Fri", "Sat"];
+  days.forEach(function (day) {
+    forecastHTML =
+      forecastHTML +
+      `
+                <div class="col-2">
+                  <div class="weather-forecast-date">${day}</div>
+                  <img
+                    src="images/rainy-weather.png"
+                    alt="rainy-weather"
+                    class="weather-icon"
+                    width="15px"
+                  />
+                  <div class="weather-forecast-temperatures">
+                    <span class="weather-forecast-temperature-max">18°</span>
+                    <span class="weather-forecast-temperature-min">12°</span>
+                  </div>
+                </div>
+              `;
+  });
+  forecastHTML = forecastHTML + `</div>`;
+  forecastElement.innerHTML = forecastHTML;
+}
 function search(event) {
   event.preventDefault();
   let city = cityInput.value;
@@ -106,7 +132,7 @@ function fetchWeatherData(lat, lon) {
   axios.get(apiUrl).then(showTemperature);
 }
 
-function getCurrentLocation() {
+function getCurrentLocation(city) {
   navigator.geolocation.getCurrentPosition(function (position) {
     let lat = position.coords.latitude;
     let lon = position.coords.longitude;
@@ -123,4 +149,6 @@ currentLocation.addEventListener("click", getPresentLocation);
 
 currentDate.innerHTML = dateFormat(currentTime);
 
-getCurrentLocation();
+getCurrentLocation("Lagos");
+
+displayForecast();
