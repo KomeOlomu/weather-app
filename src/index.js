@@ -66,7 +66,7 @@ function getPresentLocation(event) {
 }
 function convertFahrenheit(event) {
   event.preventDefault();
-  temperatureElement.innerHTML = tempInFar;
+  temperatureElement.innerHTML = Math.round(tempInFar);
 }
 
 function convertCelcius(event) {

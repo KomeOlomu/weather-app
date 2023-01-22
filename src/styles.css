@@ -26,6 +26,10 @@ p {
     color: rgb(135, 135, 135);
 }
 
+a:link {
+    text-decoration: none;
+}
+
 li {
     color: rgb(135, 135, 135);
     font-size: 16px;
