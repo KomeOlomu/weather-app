@@ -67,11 +67,16 @@ function getPresentLocation(event) {
 function convertFahrenheit(event) {
   event.preventDefault();
   temperatureElement.innerHTML = Math.round(tempInFar);
+  // remove the active class from the celcius
+  celcius.classList.remove("active");
+  fahrenheit.classList.add("active");
 }
 
 function convertCelcius(event) {
   event.preventDefault();
   temperatureElement.innerHTML = tempInCelcius;
+  celcius.classList.add("active");
+  fahrenheit.classList.remove("active");
 }
 
 function showTemperature(response) {
