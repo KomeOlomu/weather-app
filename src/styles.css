@@ -5,7 +5,7 @@ body {
 .container {
     height: 550px;
         padding-left: 20px;
-        width: 630px;
+        max-width: 630px;
         border-radius: 30px;
 }
 h1 {
@@ -93,15 +93,16 @@ width: 55px;
 
 .week-forecast {
     background-color: #77c1cb;
-    border-radius: 25px;
+    border-radius: 15px;
     box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1);
-    margin: 2px 0 6px 15px;
-    height: 130px;
-    padding: 15px 0 15px 2px;
-    width: 580px;
-    max-width: 470px;
+    /* margin: 2px 0 6px 15px; */
+    /* height: 130px; */
+    padding: 20px 10px ;
+    /* width: 580px; */
+    /* max-width: 500px; */
     text-align: center;
     color: black;
+    width: 100%;
 }
 
 .weather-forecast-date {

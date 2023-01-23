@@ -45,28 +45,36 @@ function dateFormat(date) {
   return `${day} ${hours}:${minutes}`;
 }
 
-function displayForecast() {
+// function displayForecast() {
+function displayForecast(response) {
+  let forecast = response.data.daily;
+  console.log(response);
+
   let forecastElement = document.querySelector("#forecast");
   let forecastHTML = `<div class="row">`;
-  let days = ["Mon", "Tue", "Wed", "Thur", "Fri", "Sat"];
-  days.forEach(function (day) {
+
+  forecast.forEach(function (forecastDay) {
     forecastHTML =
       forecastHTML +
       `
-                <div class="col-2">
-                  <div class="weather-forecast-date">${day}</div>
-                  <img
-                    src="images/rainy-weather.png"
-                    alt="rainy-weather"
-                    class="weather-icon"
-                    width="15px"
-                  />
-                  <div class="weather-forecast-temperatures">
-                    <span class="weather-forecast-temperature-max">18°</span>
-                    <span class="weather-forecast-temperature-min">12°</span>
-                  </div>
-                </div>
-              `;
+    <div class="col">
+    <div class="weather-forecast-date">${timeConverter(forecastDay.time)}</div>
+    <img
+    class="forecast-icon"
+    src="${forecastDay.condition.icon_url}"
+    alt="rainy-weather"
+    width="24px"
+    />
+    <div class="weather-forecast-temperatures">
+    <span class="weather-forecast-temperature-max">${Math.round(
+      forecastDay.temperature.maximum
+    )}°</span>
+    <span class="weather-forecast-temperature-min">${Math.round(
+      forecastDay.temperature.minimum
+    )}°</span>
+    </div>
+    </div>
+    `;
   });
   forecastHTML = forecastHTML + `</div>`;
   forecastElement.innerHTML = forecastHTML;
@@ -83,6 +91,14 @@ function search(event) {
     let lon = response.data.coordinates.longitude;
     fetchWeatherData(lat, lon);
   });
+}
+
+function getForecast(coordinates) {
+  console.log(coordinates);
+  let apiKey = "0d1add16b3t7670282dd93a5aob40cbf";
+  let units = "metric";
+  let apiUrl = `https://api.shecodes.io/weather/v1/forecast?lon=${coordinates.longitude}&lat=${coordinates.latitude}&key=${apiKey}&units=${units}`;
+  axios.get(apiUrl).then(displayForecast);
 }
 
 function getPresentLocation(event) {
@@ -123,6 +139,8 @@ function showTemperature(response) {
 
   iconElement.src = response.data.condition.icon_url;
   iconElement.alt = response.data.condition.icon;
+
+  getForecast(response.data.coordinates);
 }
 
 function fetchWeatherData(lat, lon) {
@@ -141,6 +159,15 @@ function getCurrentLocation(city) {
   });
 }
 
+function timeConverter(UNIX_timestamp) {
+  var a = new Date(UNIX_timestamp * 1000);
+
+  const days = ["Sun", "Mon", "Tue", "Wed", "Thurs", "Fri", "Sat"];
+  const weekDay = a.getUTCDay();
+
+  return days[weekDay];
+}
+
 // Event listeners
 searchForm.addEventListener("submit", search);
 fahrenheit.addEventListener("click", convertFahrenheit);
@@ -151,4 +178,4 @@ currentDate.innerHTML = dateFormat(currentTime);
 
 getCurrentLocation("Lagos");
 
-displayForecast();
+// displayForecast();
