@@ -17,9 +17,18 @@ h1 {
 }
 
 ul {
-    margin: 0 0 20px;
+    margin: 20px 0 20px;
     padding: 0;
+
 }
+
+#humidity, #wind {
+    text-align: right;
+    line-height: 20px;
+    position: relative;
+    bottom: 70px;
+}
+
 
 p {
     font-family: Arial, Helvetica, sans-serif;
@@ -31,12 +40,14 @@ a:link {
 }
  
 li {
+    list-style: none;
+    margin: 0;
+    padding: 0;
     color: rgb(135, 135, 135);
     font-size: 16px;
-    height: 19px;
+    /* height: 19px; */
     font-weight: 100;
-    line-height: 1;
-    list-style: none;
+    line-height: 19px;
 }
 
 .weather-app-wrapper {
@@ -45,7 +56,7 @@ li {
     padding-top: 35px;
 }
 .weather-app {
-    border: 1px solid #60bbcd;
+    border: 1px solid #9d4edd;
     padding: 20px;
     margin: 30px auto;
     border-radius: 15px;
@@ -91,8 +102,15 @@ width: 55px;
     margin-bottom: 22px;
 }
 
+.btn-outline-light {
+    background-color: #a663cc;
+}
+.btn:hover {
+    background-color: #b298dc;
+}
 .week-forecast {
-    background-color: #77c1cb;
+    /* background-color: #77c1cb; */
+    background-color: #f5f3f4;
     border-radius: 15px;
     box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1);
     /* margin: 2px 0 6px 15px; */
